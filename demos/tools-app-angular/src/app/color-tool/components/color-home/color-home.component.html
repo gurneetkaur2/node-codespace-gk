@@ -1,6 +1,3 @@
 <app-tool-header [headerText]="headerText"></app-tool-header>
-<ul>
-  <li *ngFor="let color of colors">
-    {{color.name}} - {{color.hexcode}}
-  </li>
-</ul>
+<app-color-list [colors]="colors"></app-color-list>
+<app-color-form></app-color-form>
