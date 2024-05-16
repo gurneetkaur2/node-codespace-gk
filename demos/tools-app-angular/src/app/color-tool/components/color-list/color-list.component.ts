@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { Color } from '../../models/colors';
+import { ConnectableObservable } from 'rxjs';
 
 @Component({
   selector: 'app-color-list',
@@ -13,4 +14,7 @@ export class ColorListComponent {
   @Input()
   colors: Color[] = [];
   
+  clickMe(colorName: string) {
+    console.log(`clicked: ${colorName}`);
+  }
 }

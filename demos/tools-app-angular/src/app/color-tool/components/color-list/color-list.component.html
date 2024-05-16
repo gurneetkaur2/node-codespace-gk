@@ -1,5 +1,6 @@
 <ul>
   <li *ngFor="let color of colors">
     {{color.name}} - {{color.hexcode}}
+    <button type = "button" (click)="clickMe(color.name)">Click me!</button>
   </li>
 </ul>

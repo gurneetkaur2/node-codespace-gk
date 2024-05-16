@@ -29,6 +29,10 @@ export class CarHomeComponent {
       id: Math.max(...this.cars.map(c => c.id), 0) + 1,
     });
   };
+
+  deleteCar = (carId: number) => {
+    this.cars = this.cars.filter(c => c.id !== carId);
+  };
   
 }
 
