@@ -1,5 +1,6 @@
-import { Component, OnInit, inject, DoCheck } from '@angular/core';
+import { Component, OnInit, inject, DoCheck, Output, EventEmitter } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { NewColor } from '../../models/colors';
 
 type ColorForm = {
   name: FormControl<string>,
@@ -17,6 +18,9 @@ export class ColorFormComponent implements OnInit, DoCheck {
 
   fb = inject(FormBuilder);
 
+  @Output()
+  submitColor = new EventEmitter<NewColor>();
+
   // the ! symbol tells TypeScript do not complain that I did not assign a value
   colorForm!: FormGroup<ColorForm>;
 
@@ -29,5 +33,11 @@ export class ColorFormComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     console.log(this.colorForm.value);
+  }
+
+  doSubmitColor(): void {
+    this.submitColor.emit(this.colorForm.value as NewColor);
+
+    this.colorForm.reset();
   }
 }
