@@ -2,5 +2,6 @@
   <li *ngFor="let color of colors">
     {{color.name}} - {{color.hexcode}}
     <button type = "button" (click)="clickMe(color.name)">Click me!</button>
+    <button type = "button" (click)="doDeleteColor(color.id)">X</button>
   </li>
 </ul>

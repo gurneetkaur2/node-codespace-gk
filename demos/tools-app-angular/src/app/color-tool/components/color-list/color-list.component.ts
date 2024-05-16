@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { Color } from '../../models/colors';
 import { ConnectableObservable } from 'rxjs';
@@ -14,7 +14,14 @@ export class ColorListComponent {
   @Input()
   colors: Color[] = [];
   
+  @Output()
+  deleteColor = new EventEmitter<number>();
+
   clickMe(colorName: string) {
     console.log(`clicked: ${colorName}`);
+  }
+
+  doDeleteColor(colorId: number) {
+    this.deleteColor.emit(colorId);
   }
 }
